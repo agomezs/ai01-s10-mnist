@@ -1,0 +1,9 @@
+jupyter 
+jupyterlab
+matplotlib
+numpy
+pandas
+scikit-learn
+flask
+# flask_restful
+pillow
