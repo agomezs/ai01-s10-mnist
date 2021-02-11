@@ -38,9 +38,7 @@ def decode_img(encoded_string):
 def reshape_image(img):
     img.thumbnail(size, Image.ANTIALIAS) # resize
     img =  np.invert(img.convert('L')).ravel() # Convert to grayscale and set shape as (28,)
-
-    img = img / 255
-
+    
     return img
     
 
@@ -56,9 +54,6 @@ class Predict(Resource):
         out = {'Prediccion': int(model.predict([datos])[0])}
 
         return out, 200
-
-    # TODO: Define el def get()
-    # ejercicio semanal
 
     def get(self):
         args = parser.parse_args() 
@@ -82,9 +77,6 @@ class PredictNumber(Resource):
         result = model_mnist.predict([img])[0]
 
         return { 'result': result }, 200
-
-    def get(self):
-        return { 'ola': 'hola get'}, 200
 
 api.add_resource(Predict, '/predict')
 api.add_resource(PredictNumber, '/predict-number')
